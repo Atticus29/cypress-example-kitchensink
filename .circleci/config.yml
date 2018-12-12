@@ -3,13 +3,16 @@ orbs:
   cypress: cypress-io/cypress@1.1.0
 workflows:
   build:
+    machine:
+      image: circleci/classic:201708-01
     jobs:
       appsetup:
         steps:
-          -run:
+          - checkout
+          - run:
             name: Install app
             command: npm install
-          -run:
+          - run:
             name: Start app
             command: npm start
 
