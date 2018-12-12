@@ -6,7 +6,7 @@ workflows:
     machine:
       image: circleci/classic:201708-01
     jobs:
-      appsetup:
+      build1:
         steps:
           - checkout
           - run:
