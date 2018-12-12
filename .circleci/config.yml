@@ -8,4 +8,15 @@ workflows:
         build: 'npm run build'
 
       - cypress/run:
-        start: 'npm start'
+          # name this job because we are running "cypress/run" several times
+          # with different parameters
+          name: '3 machines'
+          # job will use workspace with code and dependencies
+          # installed by the "install" job
+          requires:
+            - cypress/install
+          record: true          # record results on Cypress dashboard
+          parallel: true        # load balance all tests
+          parallelism: 3        # across 3 machines
+          group: '3x-electron'  # name this group
+          start: 'npm start'    # start server before running tests
