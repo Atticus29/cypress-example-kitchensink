@@ -4,4 +4,13 @@ orbs:
 workflows:
   build:
     jobs:
+      appsetup:
+        steps:
+          -run:
+            name: Install app
+            command: npm install
+          -run:
+            name: Start app
+            command: npm start
+
       - cypress/run
