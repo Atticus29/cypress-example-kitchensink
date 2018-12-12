@@ -5,7 +5,7 @@ workflows:
   build:
     jobs:
       - cypress/install:
-        build: 'npm run build'
+          build: 'npm run build'
 
       - cypress/run:
           # name this job because we are running "cypress/run" several times
