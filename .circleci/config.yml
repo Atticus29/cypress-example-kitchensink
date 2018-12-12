@@ -2,18 +2,12 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@1.1.0
 workflows:
-  build:
-    machine:
-      image: circleci/classic:201708-01
-    jobs:
-      build1:
-        steps:
-          - checkout
-          - run:
-            name: Install app
-            command: npm install
-          - run:
-            name: Start app
-            command: npm start
-
-      - cypress/run
+    build:
+      jobs:
+        - cypress/install:
+          build: 'npm run build'
+        - cypress/run:
+          requires:
+            -cypress/install
+          record: true
+          start: 'npm start'
