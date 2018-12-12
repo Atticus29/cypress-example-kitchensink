@@ -10,4 +10,7 @@ workflows:
           requires:
             -cypress/install
           record: true
+          parallele: true
+          parallelism: 10
+          group: 'all tests'
           start: 'npm start'
